@@ -5,107 +5,112 @@
  * Versão: 1.1
  */
 
- console.log('Sistema de Calculo de Médias Escolares');
+console.log('Sistema de Calculo de Médias Escolares');
 
 var readline = require('readline');
-const { isString } = require('util');
+var mediaEscolar = require('./modulo/funcoes.js')
 
 var entradaDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
 
-entradaDados.question('Nome do aluno(a): \n ', function (nomeAluno){
-    let aluno = String(nomeAluno);
-    let media = 0;
+entradaDados.question('Nome do(a) aluno(a): \n ', function (nomeAluno) {
+    if (mediaEscolar.campoVazio(nomeAluno))
+        entradaDados.close();
 
-    entradaDados.question('Nome do professor(a): \n ', function (nomeProfessor){
-        let professor = String(nomeProfessor);
+    else {
+        let aluno = nomeAluno;
 
-        entradaDados.question('Nome do curso: \n ', function (nomeCurso){
-            let curso = String(nomeCurso);
+        entradaDados.question('Qual o sexo do(a) Aluno(a):[feminino, masculino] \n', function (sexoAluno) {
+            if (mediaEscolar.campoVazio(sexoAluno))
+                entradaDados.close();
+            else if (!mediaEscolar.generoAluno(sexoAluno))
+                entradaDados.close();
+            else {
+                let sexoDoAluno = sexoAluno;
 
-            entradaDados.question('Nome da disciplina: \n ', function(nomeDisciplina){
-                let disciplina = String(nomeDisciplina);
+                entradaDados.question('Nome do(a) professor(a): \n', function (nomeProfessor) {
+                    if (mediaEscolar.campoVazio(nomeProfessor))
+                        entradaDados.close();
 
-                entradaDados.question('Primeira nota: ', function(nota1){
-                    let primeiraNota = Number(nota1);
+                    else {
+                        let professor = nomeProfessor;
 
-                    entradaDados.question('Segunda nota: ', function(nota2){
-                        let segundaNota = Number(nota2);
-    
-                        entradaDados.question('Terceira nota: ', function(nota3){
-                            let terceiraNota = Number(nota3)
-        
-                            entradaDados.question('Quarta nota: ', function(nota4){
-                                let quartaNota = Number(nota4);
-            
-                                if (nomeAluno == '' 
-                                || nomeProfessor == '' 
-                                || nomeCurso == '' 
-                                || nomeDisciplina == ''){
-                                    console.log('ERRO: É necessario digitar letras nos campos: Nome do aluno...');
-                                    entradaDados.close();
-                                } 
-                                // else if (isString(nomeAluno) 
-                                // || isString(nomeProfessor) 
-                                // || isString(nomeCurso)
-                                // || isString(nomeDisciplina)) {
-                                //     console.log('ERRO: Digite apenas letras nos campos: Nome do aluno...');
-                                //     entradaDados.close();
-                                // } 
-                                else if(nota1 == '' 
-                                || nota2 == '' 
-                                || nota3 == '' 
-                                || nota4 == ''){
-                                    console.log('ERRO: É necessario digitar números nos campos: Primeira nota...');
-                                    entradaDados.close();
-                                }
-                                else if(isNaN(nota1) 
-                                || isNaN(nota2) 
-                                || isNaN(nota3) 
-                                || isNaN(nota4)) {
-                                    console.log('ERRO: Digite apenas números nos campos: Primeira nota...');
-                                    entradaDados.close();
-                                } 
-                                else {
-                                    media = (Number(primeiraNota) + Number(segundaNota) + Number(terceiraNota) + Number(quartaNota))/4;
+                        entradaDados.question('Qual o sexo do(a) Professor(a):[feminino, masculino] \n', function (sexoProfessor) {
+                            if (mediaEscolar.campoVazio(sexoProfessor))
+                                entradaDados.close();
 
-                                    if(media < 0 || media > 100){
-                                        console.log('ERRO: Apenas números entre 0 e 100');
+                            else {
+                                let sexoDoProfessor = sexoProfessor;
+
+                                entradaDados.question('Qual o nome do Curso: \n', function (nomeCurso) {
+                                    if (mediaEscolar.campoVazio(nomeCurso))
                                         entradaDados.close();
-                                    } 
-                                    else if (media >= 70) 
-                                        console.log('Aprovado')
-        
-                                    else if (media >= 50 || media <= 69 ){
-                                        console.log('Exame')
-                                    }
+
                                     else {
-                                        console.log('Reprovado')
-                                        console.log(media)
+                                        let curso = nomeCurso;
+
+                                        entradaDados.question('Qual o nome da Disciplina?: \n', function (nomeDisciplina) {
+                                            if (mediaEscolar.campoVazio(nomeDisciplina))
+                                                entradaDados.close();
+
+                                            else {
+                                                let disciplina = nomeDisciplina;
+
+                                                entradaDados.question('Nota 1: \n', function (nota1) {
+                                                    if (mediaEscolar.campoVazio(nota1))
+                                                        entradaDados.close();
+
+                                                    else {
+                                                        let valor1 = Number(nota1);
+
+                                                        entradaDados.question('Nota 2: \n', function (nota2) {
+                                                            if (mediaEscolar.campoVazio(nota2))
+                                                                entradaDados.close();
+
+                                                            else {
+                                                                let valor2 = Number(nota2);
+
+                                                                entradaDados.question('Nota 3: \n', function (nota3) {
+                                                                    if (mediaEscolar.campoVazio(nota3))
+                                                                        entradaDados.close();
+
+                                                                    else {
+                                                                        let valor3 = Number(nota3);
+
+                                                                        entradaDados.question('Nota 4: \n', function (nota4) {
+                                                                            if (mediaEscolar.campoVazio(nota4))
+                                                                                entradaDados.close();
+
+                                                                            else {
+                                                                                let valor4 = Number(nota4);
+
+
+                                                                            }
+                                                                        })
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+
+                                                    }
+                                                });
+                                            }
+
+                                        });
                                     }
-
-
-                                    
-
-
-                                }
-                    
-
-
-                            });
-
+                                });
+                            }
                         });
-                    });
-
+                    }
                 });
-
-            });
-
+            }
         });
-
-    });
-
-
+    }
 });
+
+
+
+
+
