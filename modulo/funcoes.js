@@ -6,11 +6,20 @@
  */
 
 
-const validaoNota = function (nota1, nota2, nota3, nota4) {
-    if (nota1 > 100 || nota2 > 100 || nota3 > 100 || nota4 > 100 || nota1 < 0 || nota2 < 0 || nota3 < 0 || nota4 < 0) {
+const validaNota = function (nota1, nota2, nota3, nota4) {
+    if (
+        nota1 > 100 || 
+        nota2 > 100 || 
+        nota3 > 100 || 
+        nota4 > 100 || 
+        nota1 < 0 || 
+        nota2 < 0 || 
+        nota3 < 0 || 
+        nota4 < 0
+        ) {
         console.log('ERRO: Digite apenas valores entre 0 e 100');
     }
-    else if (isNaN(nota1)
+    if (isNaN(nota1)
         || isNaN(nota2)
         || isNaN(nota3)
         || isNaN(nota4)) {
@@ -33,20 +42,54 @@ const campoVazio = function (arg) {
     }
 }
 
-const generoAluno = function (sexoAluno) {
+const mascFemAluno = function (sexoAluno) {
     if (sexoAluno === "masculino") 
         return Aluno;
     else if (sexoAluno === 'feminino') 
         return Aluna;
     else 
        console.log('ERRO: Digite um sexo') 
-    
 }
+
+const mascFemProf = function (sexoProfessor) {
+    if (sexoProfessor === "masculino") 
+        return Professor;
+    else if (sexoProfessor === 'feminino') 
+        return Professora;
+    else 
+       console.log('ERRO: Digite um sexo') 
+}
+
+const avaliacaoAluno = function(media) {
+    if (media > 70)
+        return `Aprovado, média: ${media}`
+    else if(media >= 50 && media <= 69)
+        return `Exame, média: ${media}`
+    else 
+    return `Reprovado, média: ${media}`
+}
+
+const resultadoTela = function(
+    nomeAluno, 
+    sexoAluno,
+    nomeProfessor,
+    sexoProfessor,
+    nomeCurso,
+    nomeDisciplina
+    ){
+        return `O ${sexoAluno}: ${nomeAluno} 
+        \n${sexoProfessor}: ${nomeProfessor}
+        \nCurso: ${nomeCurso}
+        \nDisciplina: ${nomeDisciplina} 
+        `
+    }
 
 module.exports = {
     // validacaoPerguntas,
     campoVazio,
-    validaoNota,
-    generoAluno
+    validaNota,
+    mascFemAluno,
+    mascFemProf,
+    avaliacaoAluno,
 }
 

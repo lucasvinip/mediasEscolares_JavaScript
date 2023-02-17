@@ -15,99 +15,49 @@ var entradaDados = readline.createInterface({
     output: process.stdout
 })
 
-entradaDados.question('Nome do(a) aluno(a): \n ', function (nomeAluno) {
-    if (mediaEscolar.campoVazio(nomeAluno))
-        entradaDados.close();
+entradaDados.question('Qual o nome do aluno ?: \n', function(nomeAluno){
+    let aluno = nomeAluno
 
-    else {
-        let aluno = nomeAluno;
+        entradaDados.question('Qual o sexo do aluno? [Masculino, Feminino]:', function (sexoAluno){
+        let mascFem = sexoAluno
+        
+        entradaDados.question('Qual o nome do professor ? \n', function (nomeProfessor){
+            let professor = nomeProfessor
 
-        entradaDados.question('Qual o sexo do(a) Aluno(a):[feminino, masculino] \n', function (sexoAluno) {
-            if (mediaEscolar.campoVazio(sexoAluno))
-                entradaDados.close();
-            else if (!mediaEscolar.generoAluno(sexoAluno))
-                entradaDados.close();
-            else {
-                let sexoDoAluno = sexoAluno;
+            entradaDados.question('Qual o sexo do Professor? [Masculino, Feminino]: \n', function (sexoProfessor){
+                let femMasc = sexoProfessor
 
-                entradaDados.question('Nome do(a) professor(a): \n', function (nomeProfessor) {
-                    if (mediaEscolar.campoVazio(nomeProfessor))
-                        entradaDados.close();
+                entradaDados.question('Qual o nome do curso ? \n', function (nomeCurso){
+                    let curso = nomeCurso;
 
-                    else {
-                        let professor = nomeProfessor;
+                    entradaDados.question('Qual o nome da disciplina ? \n', function (nomeDisciplina){
+                        let disciplina = nomeDisciplina;
 
-                        entradaDados.question('Qual o sexo do(a) Professor(a):[feminino, masculino] \n', function (sexoProfessor) {
-                            if (mediaEscolar.campoVazio(sexoProfessor))
-                                entradaDados.close();
+                        entradaDados.question('Nota 1: ', function(nota1){
+                            let valor1 = mediaEscolar.validaNota(Number(nota1));
 
-                            else {
-                                let sexoDoProfessor = sexoProfessor;
+                            entradaDados.question('Nota 2: ', function(nota2){
+                                let valor2 = mediaEscolar.validaNota(Number(nota2));
 
-                                entradaDados.question('Qual o nome do Curso: \n', function (nomeCurso) {
-                                    if (mediaEscolar.campoVazio(nomeCurso))
-                                        entradaDados.close();
+                                entradaDados.question('Nota 3: ', function(nota3){
+                                    let valor3 = mediaEscolar.validaNota(Number(nota3));
 
-                                    else {
-                                        let curso = nomeCurso;
+                                    entradaDados.question('Nota 4: ', function(nota4){
+                                        let valor4 = mediaEscolar.validaNota(Number(nota4));
 
-                                        entradaDados.question('Qual o nome da Disciplina?: \n', function (nomeDisciplina) {
-                                            if (mediaEscolar.campoVazio(nomeDisciplina))
-                                                entradaDados.close();
+                                        const media = mediaEscolar.validaNota;
+                                        const notasAlunos = mediaEscolar.avaliacaoAluno(media);
+                                        
 
-                                            else {
-                                                let disciplina = nomeDisciplina;
-
-                                                entradaDados.question('Nota 1: \n', function (nota1) {
-                                                    if (mediaEscolar.campoVazio(nota1))
-                                                        entradaDados.close();
-
-                                                    else {
-                                                        let valor1 = Number(nota1);
-
-                                                        entradaDados.question('Nota 2: \n', function (nota2) {
-                                                            if (mediaEscolar.campoVazio(nota2))
-                                                                entradaDados.close();
-
-                                                            else {
-                                                                let valor2 = Number(nota2);
-
-                                                                entradaDados.question('Nota 3: \n', function (nota3) {
-                                                                    if (mediaEscolar.campoVazio(nota3))
-                                                                        entradaDados.close();
-
-                                                                    else {
-                                                                        let valor3 = Number(nota3);
-
-                                                                        entradaDados.question('Nota 4: \n', function (nota4) {
-                                                                            if (mediaEscolar.campoVazio(nota4))
-                                                                                entradaDados.close();
-
-                                                                            else {
-                                                                                let valor4 = Number(nota4);
-
-
-                                                                            }
-                                                                        })
-                                                                    }
-                                                                });
-                                                            }
-                                                        });
-
-                                                    }
-                                                });
-                                            }
-
-                                        });
-                                    }
-                                });
-                            }
-                        });
-                    }
+                                    })
+                                })
+                            })
+                        })
+                    });
                 });
-            }
-        });
-    }
+            });
+        });     
+    });
 });
 
 
