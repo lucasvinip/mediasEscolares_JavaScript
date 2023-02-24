@@ -84,7 +84,6 @@ const validarSexoAluno = function(sexoAluno){
     
 }
 
-
 module.exports = {
     validarSexoProf,
     validarSexoAluno,

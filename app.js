@@ -19,14 +19,14 @@ entradaDados.question('Qual o nome do(a) aluno(a)?: \n', function (nomeAluno) {
     let estudante = nomeAluno
 
     entradaDados.question('Sexo do(a) aluno(a)? [masculino, feminino]: ', function (sexoAluno) {
-        let estudanteSexo = sexoAluno
+        let estudanteSexo = sexoAluno.toLowerCase()
         const sexoEstudante = mediaEscolar.validarSexoAluno(sexoAluno)
 
         entradaDados.question('Qual o nome do(a) professor(a)?: \n', function (nomeProf) {
             let mentor = nomeProf
 
             entradaDados.question('Sexo do(a) professor(a)?: [masculino, feminino]: ', function (sexoProf) {
-                let mentorSexo = sexoProf
+                let mentorSexo = sexoProf.toLowerCase()
                 const sexoMentor = mediaEscolar.validarSexoProf(sexoProf)
 
                 entradaDados.question('Qual o nome do curso?: \n', function (nomeCurso) {
@@ -61,8 +61,8 @@ entradaDados.question('Qual o nome do(a) aluno(a)?: \n', function (nomeAluno) {
 
                                             if (alunoNotaFinal >= 70) {
                                             console.log(`
-                                            ${estudanteSexo}: ${estudante}
-                                            ${mentorSexo}: ${mentor} 
+                                            ${sexoEstudante}: ${estudante}
+                                            ${sexoMentor}: ${mentor} 
                                             Curso: ${curso}
                                             Disciplina: ${disciplina}
                                             Notas: primeira nota: ${primeiraNota}| segunda nota: ${segundaNota}| terceira nota: ${terceiraNota}| quarta nota: ${quartaNota}
@@ -79,8 +79,8 @@ entradaDados.question('Qual o nome do(a) aluno(a)?: \n', function (nomeAluno) {
                                                     resultadoExame = mediaEscolar.validarAlunoExame(alunoNotaFinal, exame)
                                                     if (resultadoExame >= 60) {
                                                         console.log(`
-                                                    ${estudanteSexo}: ${estudante}
-                                                    ${mentorSexo}: ${mentor} 
+                                                    ${sexoEstudante}: ${estudante}
+                                                    ${sexoMentor}: ${mentor} 
                                                     Curso: ${curso}
                                                     Disciplina: ${disciplina}
                                                     Notas: primeira nota: ${primeiraNota}| segunda nota: ${segundaNota}| terceira nota: ${terceiraNota}| quarta nota: ${quartaNota}
@@ -90,8 +90,8 @@ entradaDados.question('Qual o nome do(a) aluno(a)?: \n', function (nomeAluno) {
                                                     entradaDados.close()
                                                     } else {
                                                         console.log(`
-                                                    ${estudanteSexo}: ${estudante}
-                                                    ${mentorSexo}: ${mentor} 
+                                                    ${sexoEstudante}: ${estudante}
+                                                    ${sexoMentor}: ${mentor} 
                                                     Curso: ${curso}
                                                     Disciplina: ${disciplina}
                                                     Notas: primeira nota: ${primeiraNota}| segunda nota: ${segundaNota}| terceira nota: ${terceiraNota}| quarta nota: ${quartaNota}
@@ -103,8 +103,8 @@ entradaDados.question('Qual o nome do(a) aluno(a)?: \n', function (nomeAluno) {
                                                 })
                                             } else {
                                                 console.log(`
-                                                ${sexoAluno}: ${estudante}
-                                                ${sexoProf}: ${mentor} 
+                                                ${sexoEstudante}: ${estudante}
+                                                ${sexoMentor}: ${mentor} 
                                                 Curso: ${curso}
                                                 Disciplina: ${disciplina}
                                                 Notas: primeira nota: ${primeiraNota}| segunda nota: ${segundaNota}| terceira nota: ${terceiraNota}| quarta nota: ${quartaNota}
